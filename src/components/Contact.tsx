@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef, useState } from 'react';
 import { cn } from "@/lib/utils";
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
@@ -60,7 +61,10 @@ const Contact = () => {
     
     // Simulate form submission
     setTimeout(() => {
-      toast.success("Mensagem enviada com sucesso! Entraremos em contato em breve.");
+      toast({
+        title: "Sucesso",
+        description: "Mensagem enviada com sucesso! Entraremos em contato em breve.",
+      });
       setFormData({ name: '', email: '', phone: '', message: '' });
       setLoading(false);
     }, 1500);
