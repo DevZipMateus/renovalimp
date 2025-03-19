@@ -1,13 +1,49 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import React, { useEffect } from 'react';
+import NavBar from '@/components/NavBar';
+import Hero from '@/components/Hero';
+import AboutUs from '@/components/AboutUs';
+import Services from '@/components/Services';
+import Plans from '@/components/Plans';
+import Contact from '@/components/Contact';
+import Footer from '@/components/Footer';
+import WhatsAppButton from '@/components/WhatsAppButton';
 
 const Index = () => {
+  useEffect(() => {
+    // Ensure smooth scroll behavior works properly
+    const handleHashChange = () => {
+      if (window.location.hash) {
+        const element = document.getElementById(window.location.hash.substring(1));
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    };
+
+    // Initial scroll if URL has hash
+    handleHashChange();
+
+    // Add event listener for hash changes
+    window.addEventListener('hashchange', handleHashChange);
+
+    // Remove event listener on cleanup
+    return () => {
+      window.removeEventListener('hashchange', handleHashChange);
+    };
+  }, []);
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
-      </div>
-    </div>
+    <main className="min-h-screen flex flex-col antialiased">
+      <NavBar />
+      <Hero />
+      <AboutUs />
+      <Services />
+      <Plans />
+      <Contact />
+      <Footer />
+      <WhatsAppButton />
+    </main>
   );
 };
 
