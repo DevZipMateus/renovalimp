@@ -5,10 +5,10 @@ import { Send } from 'lucide-react';
 import { toast } from "@/hooks/use-toast";
 
 interface ContactFormProps {
-  ref: React.RefObject<HTMLFormElement>;
+  setRef: (el: HTMLFormElement | null) => void;
 }
 
-const ContactForm: React.FC<ContactFormProps> = ({ ref }) => {
+const ContactForm: React.FC<ContactFormProps> = ({ setRef }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -42,7 +42,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ ref }) => {
     <form 
       onSubmit={handleSubmit}
       className="bg-white p-8 rounded-lg shadow-sm opacity-0"
-      ref={ref}
+      ref={setRef}
     >
       <div className="space-y-5">
         <div>

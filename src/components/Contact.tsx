@@ -57,8 +57,8 @@ const Contact = () => {
         </div>
 
         <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
-          <ContactInfo ref={el => elementsRef.current[2] = el} />
-          <ContactForm ref={el => elementsRef.current[3] = el} />
+          <ContactInfo setRef={el => elementsRef.current[2] = el} />
+          <ContactForm setRef={el => elementsRef.current[3] = el} />
         </div>
       </div>
     </section>

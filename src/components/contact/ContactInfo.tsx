@@ -3,10 +3,10 @@ import React from 'react';
 import { Mail, Phone, MapPin } from 'lucide-react';
 
 interface ContactInfoProps {
-  ref: React.RefObject<HTMLDivElement>;
+  setRef: (el: HTMLDivElement | null) => void;
 }
 
-const ContactInfo: React.FC<ContactInfoProps> = ({ ref }) => {
+const ContactInfo: React.FC<ContactInfoProps> = ({ setRef }) => {
   const contactInfo = [
     {
       icon: <Phone className="h-5 w-5" />,
@@ -31,7 +31,7 @@ const ContactInfo: React.FC<ContactInfoProps> = ({ ref }) => {
   return (
     <div 
       className="space-y-8 opacity-0"
-      ref={ref}
+      ref={setRef}
     >
       <div>
         <h3 className="text-accounting-navy font-display font-semibold text-xl mb-4">
