@@ -1,8 +1,7 @@
-
 import React, { useEffect, useRef, useState } from 'react';
 import { cn } from "@/lib/utils";
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
-import { toast } from "@/components/ui/sonner";
+import { toast } from "@/hooks/use-toast";
 
 const Contact = () => {
   const observerRef = useRef<IntersectionObserver | null>(null);
