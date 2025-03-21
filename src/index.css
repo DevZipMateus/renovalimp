@@ -7,33 +7,31 @@
 
 @layer base {
   :root {
-    --background: 210 33% 99%;
-    --foreground: 222 47% 11%;
-
+    /* Cores primárias 60% */
+    --background: 215 33% 99%;
+    --foreground: 215 60% 20%;
     --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
+    --card-foreground: 215 60% 20%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
-
-    --primary: 215 60% 20%;
-    --primary-foreground: 210 40% 98%;
-
+    /* Cores secundárias 30% */
     --secondary: 210 40% 96%;
-    --secondary-foreground: 222 47% 11%;
-
+    --secondary-foreground: 215 40% 40%;
     --muted: 210 40% 96%;
     --muted-foreground: 215 16% 47%;
-
     --accent: 40 30% 53%;
     --accent-foreground: 222 47% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 60% 20%;
 
+    /* Cores de contraste 10% */
+    --primary: 139 61% 42%;
+    --primary-foreground: 0 0% 100%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
-
+    
     --border: 214 32% 91%;
     --input: 214 32% 91%;
-    --ring: 215 60% 20%;
+    --ring: 139 61% 42%;
 
     --radius: 0.5rem;
   }
@@ -55,11 +53,11 @@
   }
   
   .section-title {
-    @apply text-accounting-navy text-3xl md:text-4xl font-display font-bold mb-2 opacity-0 animate-slide-up;
+    @apply text-foreground text-3xl md:text-4xl font-display font-bold mb-2 opacity-0 animate-slide-up;
   }
   
   .section-subtitle {
-    @apply text-accounting-gray text-lg md:text-xl max-w-3xl mx-auto mb-12 opacity-0 animate-slide-up animation-delay-200;
+    @apply text-secondary-foreground text-lg md:text-xl max-w-3xl mx-auto mb-12 opacity-0 animate-slide-up animation-delay-200;
   }
   
   .card-shadow {
@@ -91,6 +89,6 @@
   }
   
   .blue-gradient {
-    background: linear-gradient(135deg, #1A2942 0%, #2E4A78 100%);
+    background: linear-gradient(135deg, hsl(215, 60%, 20%) 0%, hsl(215, 40%, 40%) 100%);
   }
 }

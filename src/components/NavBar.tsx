@@ -35,6 +35,19 @@ const NavBar = () => {
     };
   }, []);
 
+  // Bloqueia o scroll quando o menu mobile está aberto
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isMenuOpen]);
+
   const navLinks = [
     { name: 'Início', id: 'home' },
     { name: 'Sobre Nós', id: 'about' },
@@ -62,7 +75,7 @@ const NavBar = () => {
               scrollToSection('home');
             }}
           >
-            Conta<span className="text-accounting-blue">Precisão</span>
+            Conta<span className="text-accounting-green">Precisão</span>
           </a>
         </div>
 
@@ -72,7 +85,7 @@ const NavBar = () => {
             <a
               key={link.id}
               href={`#${link.id}`}
-              className="text-accounting-gray hover:text-accounting-navy transition-colors duration-300 text-sm font-medium"
+              className="text-accounting-blue hover:text-accounting-navy transition-colors duration-300 text-sm font-medium"
               onClick={(e) => {
                 e.preventDefault();
                 scrollToSection(link.id);
@@ -96,16 +109,16 @@ const NavBar = () => {
       {/* Mobile Menu */}
       <div 
         className={cn(
-          "fixed inset-0 bg-white z-40 flex flex-col pt-20 px-4 md:hidden transition-transform duration-300 ease-in-out",
+          "fixed inset-0 bg-white z-40 flex flex-col justify-center items-center md:hidden transition-transform duration-300 ease-in-out",
           isMenuOpen ? "translate-x-0" : "translate-x-full"
         )}
       >
-        <nav className="flex flex-col space-y-6 items-center">
+        <nav className="flex flex-col space-y-8 items-center">
           {navLinks.map((link) => (
             <a
               key={link.id}
               href={`#${link.id}`}
-              className="text-accounting-navy text-lg font-medium"
+              className="text-accounting-navy text-2xl font-medium hover:text-accounting-green transition-colors"
               onClick={(e) => {
                 e.preventDefault();
                 scrollToSection(link.id);

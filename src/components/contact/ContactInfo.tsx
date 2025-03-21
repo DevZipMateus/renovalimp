@@ -51,16 +51,16 @@ const ContactInfo: React.FC<ContactInfoProps> = ({ setRef }) => {
             <a 
               href={info.href}
               key={index}
-              className="flex items-start hover:text-accounting-blue transition-colors duration-300"
+              className="flex items-start hover:text-accounting-green transition-colors duration-300"
               target={info.icon.type === MapPin ? "_blank" : undefined}
               rel={info.icon.type === MapPin ? "noopener noreferrer" : undefined}
             >
-              <div className="text-accounting-gold mt-1 mr-3">
+              <div className="text-accounting-green mt-1 mr-3">
                 {info.icon}
               </div>
               <div>
                 <h4 className="font-medium text-accounting-navy">{info.title}</h4>
-                <p className="text-accounting-gray">{info.details}</p>
+                <p className="text-accounting-blue">{info.details}</p>
               </div>
             </a>
           ))}
@@ -71,7 +71,7 @@ const ContactInfo: React.FC<ContactInfoProps> = ({ setRef }) => {
         <h3 className="text-accounting-navy font-display font-semibold text-xl mb-4">
           Horário de Atendimento
         </h3>
-        <p className="text-accounting-gray">
+        <p className="text-accounting-blue">
           Segunda a Sexta: 9h às 18h<br />
           Sábados: 9h às 13h
         </p>
