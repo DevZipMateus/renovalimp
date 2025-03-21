@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Mail, Phone, MapPin } from 'lucide-react';
+import { Mail, Phone, MessageCircle, MapPin } from 'lucide-react';
 
 interface ContactInfoProps {
   setRef: (el: HTMLDivElement | null) => void;
@@ -21,6 +21,12 @@ const ContactInfo: React.FC<ContactInfoProps> = ({ setRef }) => {
       href: "mailto:contato@contaprecisao.com.br"
     },
     {
+      icon: <MessageCircle className="h-5 w-5" />,
+      title: "WhatsApp",
+      details: "+55 (11) 95456-7890",
+      href: "https://wa.me/5511954567890?text=Olá!%20Gostaria%20de%20mais%20informações%20sobre%20os%20serviços%20de%20contabilidade."
+    },
+    {
       icon: <MapPin className="h-5 w-5" />,
       title: "Endereço",
       details: "Av. Paulista, 1000 - Bela Vista, São Paulo - SP",
@@ -30,14 +36,17 @@ const ContactInfo: React.FC<ContactInfoProps> = ({ setRef }) => {
 
   return (
     <div 
-      className="space-y-8 opacity-0"
+      className="space-y-8 opacity-0 bg-white p-8 rounded-lg shadow-sm"
       ref={setRef}
     >
+      <div className="text-center mb-6">
+        <p className="text-accounting-navy font-medium">
+          Para sua comodidade, disponibilizamos atendimento exclusivamente através dos seguintes canais de comunicação:
+        </p>
+      </div>
+      
       <div>
-        <h3 className="text-accounting-navy font-display font-semibold text-xl mb-4">
-          Informações de Contato
-        </h3>
-        <div className="space-y-4">
+        <div className="space-y-6">
           {contactInfo.map((info, index) => (
             <a 
               href={info.href}

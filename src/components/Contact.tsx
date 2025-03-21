@@ -1,6 +1,5 @@
 
 import React, { useEffect, useRef } from 'react';
-import ContactForm from './contact/ContactForm';
 import ContactInfo from './contact/ContactInfo';
 
 const Contact = () => {
@@ -52,13 +51,13 @@ const Contact = () => {
             Entre em Contato
           </h2>
           <p className="section-subtitle" ref={el => elementsRef.current[1] = el}>
-            Estamos prontos para ajudar a transformar a contabilidade da sua empresa. Fale conosco agora mesmo.
+            Estamos disponíveis para atendê-lo através dos nossos canais de comunicação direta. 
+            Entre em contato conosco hoje mesmo.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+        <div className="max-w-3xl mx-auto">
           <ContactInfo setRef={el => elementsRef.current[2] = el} />
-          <ContactForm setRef={el => elementsRef.current[3] = el} />
         </div>
       </div>
     </section>
