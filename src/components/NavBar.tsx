@@ -2,20 +2,15 @@
 import React, { useState, useEffect } from 'react';
 import { cn } from "@/lib/utils";
 import { Menu, X } from 'lucide-react';
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 const NavBar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
-      setIsMenuOpen(false);
     }
   };
 
@@ -34,19 +29,6 @@ const NavBar = () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
-
-  // Bloqueia o scroll quando o menu mobile está aberto
-  useEffect(() => {
-    if (isMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-    
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
-  }, [isMenuOpen]);
 
   const navLinks = [
     { name: 'Início', id: 'home' },
@@ -96,38 +78,40 @@ const NavBar = () => {
           ))}
         </nav>
 
-        {/* Mobile Navigation Toggle */}
-        <button 
-          className="md:hidden text-accounting-navy" 
-          onClick={toggleMenu}
-          aria-label="Toggle menu"
-        >
-          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
-      </div>
-
-      {/* Mobile Menu */}
-      <div 
-        className={cn(
-          "fixed inset-0 bg-white z-40 flex flex-col justify-center items-center md:hidden transition-transform duration-300 ease-in-out",
-          isMenuOpen ? "translate-x-0" : "translate-x-full"
-        )}
-      >
-        <nav className="flex flex-col space-y-8 items-center">
-          {navLinks.map((link) => (
-            <a
-              key={link.id}
-              href={`#${link.id}`}
-              className="text-accounting-navy text-2xl font-medium hover:text-accounting-green transition-colors"
-              onClick={(e) => {
-                e.preventDefault();
-                scrollToSection(link.id);
-              }}
+        {/* Mobile Navigation with Sheet component */}
+        <Sheet>
+          <SheetTrigger asChild>
+            <button 
+              className="md:hidden text-accounting-navy p-2 rounded-md" 
+              aria-label="Open menu"
             >
-              {link.name}
-            </a>
-          ))}
-        </nav>
+              <Menu size={24} />
+            </button>
+          </SheetTrigger>
+          <SheetContent side="right" className="w-[80%] p-0 bg-white">
+            <div className="flex flex-col h-full">
+              <div className="flex justify-end p-4">
+                <X className="text-accounting-navy" size={24} />
+              </div>
+              <nav className="flex flex-col items-center justify-center flex-1 space-y-8 pb-12">
+                {navLinks.map((link) => (
+                  <a
+                    key={link.id}
+                    href={`#${link.id}`}
+                    className="text-accounting-navy text-xl font-medium hover:text-accounting-green transition-colors w-full text-center py-4"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      document.querySelector('[data-state="open"]')?.setAttribute('data-state', 'closed');
+                      setTimeout(() => scrollToSection(link.id), 100);
+                    }}
+                  >
+                    {link.name}
+                  </a>
+                ))}
+              </nav>
+            </div>
+          </SheetContent>
+        </Sheet>
       </div>
     </header>
   );
