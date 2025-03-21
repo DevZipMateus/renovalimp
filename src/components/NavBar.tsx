@@ -82,23 +82,32 @@ const NavBar = () => {
         <Sheet>
           <SheetTrigger asChild>
             <button 
-              className="md:hidden text-accounting-navy p-2 rounded-md" 
+              className="md:hidden text-accounting-navy p-2 rounded-md hover:bg-accounting-lightgray/50 transition-colors" 
               aria-label="Open menu"
             >
               <Menu size={24} />
             </button>
           </SheetTrigger>
-          <SheetContent side="right" className="w-[80%] p-0 bg-white">
+          <SheetContent side="right" className="w-[80%] p-0 bg-gradient-to-br from-white to-accounting-lightgray border-l-4 border-accounting-green">
             <div className="flex flex-col h-full">
-              <div className="flex justify-end p-4">
-                <X className="text-accounting-navy" size={24} />
+              <div className="flex justify-between items-center p-5 border-b border-accounting-lightgray">
+                <div className="font-display font-bold text-xl text-accounting-navy">
+                  Conta<span className="text-accounting-green">Precisão</span>
+                </div>
+                <Sheet.Close className="p-2 rounded-full hover:bg-accounting-lightgray/70 transition-all">
+                  <X className="text-accounting-navy" size={20} />
+                </Sheet.Close>
               </div>
-              <nav className="flex flex-col items-center justify-center flex-1 space-y-8 pb-12">
-                {navLinks.map((link) => (
+              <nav className="flex flex-col items-stretch justify-start flex-1 mt-6">
+                {navLinks.map((link, index) => (
                   <a
                     key={link.id}
                     href={`#${link.id}`}
-                    className="text-accounting-navy text-xl font-medium hover:text-accounting-green transition-colors w-full text-center py-4"
+                    className={cn(
+                      "text-accounting-navy text-lg font-medium hover:bg-accounting-lightgray/70 transition-all w-full text-center py-5 px-4 flex items-center justify-center",
+                      "relative overflow-hidden after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-accounting-green after:transition-all after:duration-300 hover:after:w-1/4"
+                    )}
+                    style={{ animationDelay: `${index * 100}ms` }}
                     onClick={(e) => {
                       e.preventDefault();
                       document.querySelector('[data-state="open"]')?.setAttribute('data-state', 'closed');
@@ -109,6 +118,11 @@ const NavBar = () => {
                   </a>
                 ))}
               </nav>
+              <div className="p-6 border-t border-accounting-lightgray mt-auto">
+                <div className="text-accounting-blue text-sm text-center">
+                  © 2024 ContaPrecisão - Todos os direitos reservados
+                </div>
+              </div>
             </div>
           </SheetContent>
         </Sheet>
