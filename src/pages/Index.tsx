@@ -34,13 +34,15 @@ const Index = () => {
   }, []);
 
   return (
-    <main className="min-h-screen flex flex-col antialiased">
+    <main className="min-h-screen flex flex-col antialiased overflow-x-hidden">
       <NavBar />
       <Hero />
-      <AboutUs />
-      <Services />
-      <Plans />
-      <Contact />
+      <div className="space-y-0"> {/* Removed spacing between sections */}
+        <AboutUs />
+        <Services />
+        <Plans />
+        <Contact />
+      </div>
       <Footer />
       <WhatsAppButton />
     </main>

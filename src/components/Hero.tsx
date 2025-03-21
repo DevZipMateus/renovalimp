@@ -105,7 +105,7 @@ const Hero = () => {
       
       <button
         onClick={scrollToAbout}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 text-accounting-gray hover:text-accounting-navy transition-colors duration-300 animate-float"
+        className="absolute bottom-4 left-1/2 -translate-x-1/2 text-accounting-gray hover:text-accounting-navy transition-colors duration-300 animate-float"
         aria-label="Scroll down"
       >
         <ArrowDown size={28} />
