@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { cn } from "@/lib/utils";
 import { Menu, X } from 'lucide-react';
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
 
 const NavBar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -94,9 +94,9 @@ const NavBar = () => {
                 <div className="font-display font-bold text-xl text-accounting-navy">
                   Conta<span className="text-accounting-green">Precisão</span>
                 </div>
-                <Sheet.Close className="p-2 rounded-full hover:bg-accounting-lightgray/70 transition-all">
+                <SheetClose className="p-2 rounded-full hover:bg-accounting-lightgray/70 transition-all">
                   <X className="text-accounting-navy" size={20} />
-                </Sheet.Close>
+                </SheetClose>
               </div>
               <nav className="flex flex-col items-stretch justify-start flex-1 mt-6">
                 {navLinks.map((link, index) => (
