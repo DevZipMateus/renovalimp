@@ -46,32 +46,36 @@ const Hero = () => {
       className="relative min-h-screen flex items-center justify-center pt-16 overflow-hidden"
     >
       <div className="absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-gradient-to-b from-accounting-lightgray/80 to-white"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-renova-light-gray/80 to-white"></div>
       </div>
       
       <div className="container mx-auto px-4 text-center">
-        <div className="max-w-4xl mx-auto">
-          <p 
+        <div className="max-w-4xl mx-auto pt-16">
+          <div 
             ref={el => elementsRef.current[0] = el}
-            className="text-accounting-gold font-medium mb-3 opacity-0"
+            className="mb-6 opacity-0 flex justify-center"
           >
-            Contabilidade de excelência para o seu negócio
-          </p>
+            <img 
+              src="/lovable-uploads/bbb735fd-1094-405b-9d5c-513f9999ba9f.png" 
+              alt="Renova - Higienização e Impermeabilização de Estofados" 
+              className="max-w-xs md:max-w-sm"
+            />
+          </div>
           
           <h1 
             ref={el => elementsRef.current[1] = el}
-            className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-accounting-navy leading-tight mb-6 opacity-0"
+            className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-renova-blue leading-tight mb-6 opacity-0"
             style={{ animationDelay: '200ms' }}
           >
-            Simplicidade e precisão para suas finanças
+            Higienização e Impermeabilização de Estofados
           </h1>
           
           <p 
             ref={el => elementsRef.current[2] = el}
-            className="text-accounting-gray text-lg md:text-xl max-w-2xl mx-auto mb-8 opacity-0"
+            className="text-renova-dark-gray text-lg md:text-xl max-w-2xl mx-auto mb-8 opacity-0"
             style={{ animationDelay: '400ms' }}
           >
-            Transformamos números complexos em soluções claras. Deixe-nos cuidar da sua contabilidade enquanto você foca no crescimento do seu negócio.
+            Amor em cada detalhe. RENOVA, cuidando de você e do seu lar!
           </p>
           
           <div 
@@ -81,7 +85,7 @@ const Hero = () => {
           >
             <a 
               href="#contact" 
-              className="bg-accounting-navy hover:bg-accounting-blue text-white px-6 py-3 rounded-md font-medium transition-colors duration-300"
+              className="bg-renova-blue hover:bg-renova-blue/80 text-white px-6 py-3 rounded-md font-medium transition-colors duration-300"
               onClick={(e) => {
                 e.preventDefault();
                 document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
@@ -91,7 +95,7 @@ const Hero = () => {
             </a>
             <a 
               href="#services" 
-              className="bg-white hover:bg-accounting-lightgray text-accounting-navy border border-accounting-navy/20 px-6 py-3 rounded-md font-medium transition-colors duration-300"
+              className="bg-white hover:bg-renova-light-gray text-renova-blue border border-renova-blue/20 px-6 py-3 rounded-md font-medium transition-colors duration-300"
               onClick={(e) => {
                 e.preventDefault();
                 document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
@@ -105,7 +109,7 @@ const Hero = () => {
       
       <button
         onClick={scrollToAbout}
-        className="absolute bottom-4 left-1/2 -translate-x-1/2 text-accounting-gray hover:text-accounting-navy transition-colors duration-300 animate-float"
+        className="absolute bottom-4 left-1/2 -translate-x-1/2 text-renova-gray hover:text-renova-blue transition-colors duration-300 animate-float"
         aria-label="Scroll down"
       >
         <ArrowDown size={28} />

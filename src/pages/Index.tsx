@@ -4,7 +4,6 @@ import NavBar from '@/components/NavBar';
 import Hero from '@/components/Hero';
 import AboutUs from '@/components/AboutUs';
 import Services from '@/components/Services';
-import Plans from '@/components/Plans';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
@@ -37,10 +36,9 @@ const Index = () => {
     <main className="min-h-screen flex flex-col antialiased overflow-x-hidden">
       <NavBar />
       <Hero />
-      <div className="space-y-0"> {/* Removed spacing between sections */}
+      <div className="space-y-0">
         <AboutUs />
         <Services />
-        <Plans />
         <Contact />
       </div>
       <Footer />

@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -20,7 +21,7 @@ export default {
 		extend: {
 			fontFamily: {
 				sans: ['Inter', 'sans-serif'],
-				display: ['SF Pro Display', 'Inter', 'sans-serif'],
+				display: ['Montserrat', 'Inter', 'sans-serif'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',
@@ -56,16 +57,14 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				// Custom accounting color palette
-				accounting: {
-					navy: 'hsl(215, 60%, 20%)', // Cor base (60%)
-					blue: 'hsl(215, 40%, 40%)', // Cor secundária (30%)
-					lightblue: '#5B7BA5',
-					gray: '#8E9196',
-					lightgray: '#F0F2F5',
-					gold: '#B7995A',
+				// Renova color palette
+				renova: {
+					blue: '#1E90FF',
+					'light-blue': '#87CEFA',
 					white: '#FFFFFF',
-					green: 'hsl(139, 61%, 42%)', // Cor de contraste (10%)
+					gray: '#808080',
+					'light-gray': '#E0E0E0',
+					'dark-gray': '#404040',
 				},
 			},
 			borderRadius: {

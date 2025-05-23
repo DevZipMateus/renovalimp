@@ -34,7 +34,6 @@ const NavBar = () => {
     { name: 'Início', id: 'home' },
     { name: 'Sobre Nós', id: 'about' },
     { name: 'Serviços', id: 'services' },
-    { name: 'Planos', id: 'plans' },
     { name: 'Contato', id: 'contact' },
   ];
 
@@ -51,13 +50,17 @@ const NavBar = () => {
         <div className="flex items-center">
           <a 
             href="#home" 
-            className="text-accounting-navy font-display font-bold text-xl md:text-2xl"
+            className="font-display font-bold text-xl md:text-2xl"
             onClick={(e) => {
               e.preventDefault();
               scrollToSection('home');
             }}
           >
-            Conta<span className="text-accounting-green">Precisão</span>
+            <img 
+              src="/lovable-uploads/bbb735fd-1094-405b-9d5c-513f9999ba9f.png" 
+              alt="Renova - Higienização e Impermeabilização de Estofados" 
+              className="h-12 md:h-14"
+            />
           </a>
         </div>
 
@@ -67,7 +70,7 @@ const NavBar = () => {
             <a
               key={link.id}
               href={`#${link.id}`}
-              className="text-accounting-blue hover:text-accounting-navy transition-colors duration-300 text-sm font-medium"
+              className="text-renova-blue hover:text-renova-blue/80 transition-colors duration-300 text-sm font-medium"
               onClick={(e) => {
                 e.preventDefault();
                 scrollToSection(link.id);
@@ -82,20 +85,24 @@ const NavBar = () => {
         <Sheet>
           <SheetTrigger asChild>
             <button 
-              className="md:hidden text-accounting-navy p-2 rounded-md hover:bg-accounting-lightgray/50 transition-colors" 
+              className="md:hidden text-renova-blue p-2 rounded-md hover:bg-renova-light-gray/50 transition-colors" 
               aria-label="Open menu"
             >
               <Menu size={24} />
             </button>
           </SheetTrigger>
-          <SheetContent side="right" className="w-[80%] p-0 bg-gradient-to-br from-white to-accounting-lightgray border-l-4 border-accounting-green">
+          <SheetContent side="right" className="w-[80%] p-0 bg-gradient-to-br from-white to-renova-light-gray border-l-4 border-renova-blue">
             <div className="flex flex-col h-full">
-              <div className="flex justify-between items-center p-5 border-b border-accounting-lightgray">
-                <div className="font-display font-bold text-xl text-accounting-navy">
-                  Conta<span className="text-accounting-green">Precisão</span>
+              <div className="flex justify-between items-center p-5 border-b border-renova-light-gray">
+                <div className="font-display font-bold text-xl">
+                  <img 
+                    src="/lovable-uploads/bbb735fd-1094-405b-9d5c-513f9999ba9f.png" 
+                    alt="Renova Logo" 
+                    className="h-10"
+                  />
                 </div>
-                <SheetClose className="p-2 rounded-full hover:bg-accounting-lightgray/70 transition-all">
-                  <X className="text-accounting-navy" size={20} />
+                <SheetClose className="p-2 rounded-full hover:bg-renova-light-gray/70 transition-all">
+                  <X className="text-renova-blue" size={20} />
                 </SheetClose>
               </div>
               <nav className="flex flex-col items-stretch justify-start flex-1 mt-6">
@@ -104,8 +111,8 @@ const NavBar = () => {
                     key={link.id}
                     href={`#${link.id}`}
                     className={cn(
-                      "text-accounting-navy text-lg font-medium hover:bg-accounting-lightgray/70 transition-all w-full text-center py-5 px-4 flex items-center justify-center",
-                      "relative overflow-hidden after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-accounting-green after:transition-all after:duration-300 hover:after:w-1/4"
+                      "text-renova-blue text-lg font-medium hover:bg-renova-light-gray/70 transition-all w-full text-center py-5 px-4 flex items-center justify-center",
+                      "relative overflow-hidden after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-renova-blue after:transition-all after:duration-300 hover:after:w-1/4"
                     )}
                     style={{ animationDelay: `${index * 100}ms` }}
                     onClick={(e) => {
@@ -118,9 +125,9 @@ const NavBar = () => {
                   </a>
                 ))}
               </nav>
-              <div className="p-6 border-t border-accounting-lightgray mt-auto">
-                <div className="text-accounting-blue text-sm text-center">
-                  © 2024 ContaPrecisão - Todos os direitos reservados
+              <div className="p-6 border-t border-renova-light-gray mt-auto">
+                <div className="text-renova-blue text-sm text-center">
+                  © 2024 Renova - Todos os direitos reservados
                 </div>
               </div>
             </div>

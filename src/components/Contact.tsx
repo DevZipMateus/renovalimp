@@ -43,7 +43,7 @@ const Contact = () => {
     <section 
       id="contact" 
       ref={sectionRef}
-      className="py-20 bg-secondary/70"
+      className="py-20 bg-renova-light-gray/50"
     >
       <div className="section-container">
         <div className="text-center mb-16">

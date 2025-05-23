@@ -1,5 +1,5 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -7,31 +7,31 @@
 
 @layer base {
   :root {
-    /* Cores primárias 60% */
-    --background: 215 33% 99%;
-    --foreground: 215 60% 20%;
+    /* Cores primárias - Azul */
+    --background: 0 0% 100%;
+    --foreground: 210 50% 20%;
     --card: 0 0% 100%;
-    --card-foreground: 215 60% 20%;
+    --card-foreground: 210 50% 20%;
 
-    /* Cores secundárias 30% */
-    --secondary: 210 40% 96%;
-    --secondary-foreground: 215 40% 40%;
-    --muted: 210 40% 96%;
-    --muted-foreground: 215 16% 47%;
-    --accent: 40 30% 53%;
+    /* Cores secundárias - Cinza */
+    --secondary: 0 0% 95%;
+    --secondary-foreground: 210 50% 40%;
+    --muted: 0 0% 90%;
+    --muted-foreground: 210 16% 47%;
+    --accent: 210 40% 90%;
     --accent-foreground: 222 47% 11%;
     --popover: 0 0% 100%;
-    --popover-foreground: 215 60% 20%;
+    --popover-foreground: 210 50% 20%;
 
-    /* Cores de contraste 10% */
-    --primary: 139 61% 42%;
+    /* Cores de contraste - Azul mais forte */
+    --primary: 210 100% 50%;
     --primary-foreground: 0 0% 100%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
     
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
-    --ring: 139 61% 42%;
+    --border: 0 0% 85%;
+    --input: 0 0% 85%;
+    --ring: 210 100% 50%;
 
     --radius: 0.5rem;
   }
@@ -44,6 +44,7 @@
   body {
     @apply bg-background text-foreground antialiased;
     font-feature-settings: "ss01" on, "ss02" on, "cv01" on, "cv03" on;
+    overflow-x: hidden; /* Prevenir rolagem horizontal */
   }
 }
 
@@ -89,6 +90,12 @@
   }
   
   .blue-gradient {
-    background: linear-gradient(135deg, hsl(215, 60%, 20%) 0%, hsl(215, 40%, 40%) 100%);
+    background: linear-gradient(135deg, #1E90FF 0%, #87CEFA 100%);
+  }
+
+  /* Adicionar bloqueio de rolagem horizontal */
+  #root {
+    max-width: 100vw;
+    overflow-x: hidden;
   }
 }

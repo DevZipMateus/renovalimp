@@ -1,7 +1,7 @@
 
 import React, { useEffect, useRef } from 'react';
 import { cn } from "@/lib/utils";
-import { LineChart, BarChart, Trophy } from 'lucide-react';
+import { CheckCircle, Award, ThumbsUp } from 'lucide-react';
 
 const AboutUs = () => {
   const observerRef = useRef<IntersectionObserver | null>(null);
@@ -42,19 +42,19 @@ const AboutUs = () => {
 
   const features = [
     {
-      icon: <LineChart className="h-10 w-10 text-accounting-gold" />,
+      icon: <CheckCircle className="h-10 w-10 text-renova-blue" />,
+      title: "Qualidade Garantida",
+      description: "Trabalhamos com os melhores produtos, máquinas e técnicas, garantindo resultados excepcionais."
+    },
+    {
+      icon: <Award className="h-10 w-10 text-renova-blue" />,
       title: "Experiência Comprovada",
-      description: "Mais de 15 anos de experiência atendendo empresas de diferentes portes e segmentos."
+      description: "Anos de experiência na região nos tornam líderes no segmento, com clientes satisfeitos."
     },
     {
-      icon: <BarChart className="h-10 w-10 text-accounting-gold" />,
-      title: "Atendimento Personalizado",
-      description: "Soluções sob medida para as necessidades específicas da sua empresa e do seu segmento."
-    },
-    {
-      icon: <Trophy className="h-10 w-10 text-accounting-gold" />,
-      title: "Equipe Qualificada",
-      description: "Profissionais especializados e constantemente atualizados com as mudanças fiscais e tributárias."
+      icon: <ThumbsUp className="h-10 w-10 text-renova-blue" />,
+      title: "Equipe Especializada",
+      description: "Nossos colaboradores são treinados para oferecer um serviço seguro e de alta qualidade."
     }
   ];
 
@@ -70,29 +70,29 @@ const AboutUs = () => {
             Sobre Nós
           </h2>
           <p className="section-subtitle" ref={el => elementsRef.current[1] = el}>
-            Somos um escritório de contabilidade comprometido com a excelência e a transparência nos serviços prestados.
+            Nossa empresa é focada em trazer ao seu lar saúde, tranquilidade, segurança, conforto, bem-estar e aconchego.
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
             <p 
-              className="text-accounting-gray opacity-0" 
+              className="text-renova-dark-gray opacity-0" 
               ref={el => elementsRef.current[2] = el}
             >
-              Fundada em 2008, a <span className="font-semibold text-accounting-navy">ContaPrecisão</span> nasceu com o propósito de transformar a relação entre empresas e a contabilidade, oferecendo um serviço que vai além dos números.
+              Com anos de experiência na região, nossa empresa trabalha com a melhor qualidade, tanto em produtos, máquinas e técnicas que nos faz ser líder por anos no segmento na região.
             </p>
             <p 
-              className="text-accounting-gray opacity-0" 
+              className="text-renova-dark-gray opacity-0" 
               ref={el => elementsRef.current[3] = el}
             >
-              Nossa missão é fornecer soluções contábeis claras e estratégicas, auxiliando nossos clientes a tomarem as melhores decisões para o crescimento sustentável de seus negócios.
+              Colaboradores treinados para levar ao seu lar a tranquilidade para deixar seus estofados em boas mãos e com segurança.
             </p>
             <p 
-              className="text-accounting-gray opacity-0" 
+              className="text-renova-dark-gray opacity-0" 
               ref={el => elementsRef.current[4] = el}
             >
-              Trabalhamos com ética, precisão e um profundo compromisso com a satisfação dos nossos clientes, construindo relações de confiança duradouras.
+              Na <span className="font-semibold text-renova-blue">Renova</span>, entendemos que seus estofados são mais do que apenas móveis - são parte do seu lar, onde você e sua família passam momentos importantes. É por isso que nos dedicamos a oferecer serviços de higienização e impermeabilização com o mais alto padrão de qualidade.
             </p>
           </div>
 
@@ -100,17 +100,17 @@ const AboutUs = () => {
             {features.map((feature, index) => (
               <div 
                 key={index} 
-                className="bg-accounting-lightgray/50 p-6 rounded-lg flex items-start space-x-4 opacity-0"
+                className="bg-renova-light-gray/50 p-6 rounded-lg flex items-start space-x-4 opacity-0"
                 ref={el => elementsRef.current[5 + index] = el}
               >
                 <div className="flex-shrink-0 mt-1">
                   {feature.icon}
                 </div>
                 <div>
-                  <h3 className="font-display font-semibold text-accounting-navy text-lg mb-2">
+                  <h3 className="font-display font-semibold text-renova-blue text-lg mb-2">
                     {feature.title}
                   </h3>
-                  <p className="text-accounting-gray">
+                  <p className="text-renova-dark-gray">
                     {feature.description}
                   </p>
                 </div>
