@@ -1,5 +1,5 @@
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { 
   Carousel,
   CarouselContent,
@@ -7,11 +7,14 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import ImageModal from './ImageModal';
 
 const Testimonials = () => {
   const observerRef = useRef<IntersectionObserver | null>(null);
   const sectionRef = useRef<HTMLElement | null>(null);
   const elementsRef = useRef<(HTMLElement | null)[]>([]);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   
   useEffect(() => {
     observerRef.current = new IntersectionObserver((entries) => {
@@ -117,74 +120,103 @@ const Testimonials = () => {
     }
   ];
 
+  const openModal = (index: number) => {
+    setCurrentImageIndex(index);
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+
+  const nextImage = () => {
+    setCurrentImageIndex((prev) => (prev + 1) % serviceImages.length);
+  };
+
+  const previousImage = () => {
+    setCurrentImageIndex((prev) => (prev - 1 + serviceImages.length) % serviceImages.length);
+  };
+
   return (
-    <section id="gallery" ref={sectionRef} className="py-20 bg-white">
-      <div className="section-container">
-        <div className="text-center mb-16">
-          <h2 className="section-title" ref={el => elementsRef.current[0] = el}>
-            Galeria de Serviços
-          </h2>
-          <p className="section-subtitle" ref={el => elementsRef.current[1] = el}>
-            Conheça nosso trabalho através de imagens reais dos nossos serviços
-          </p>
-        </div>
-        
-        <div 
-          ref={el => elementsRef.current[2] = el}
-          className="opacity-0 mx-auto"
-        >
-          <Carousel className="max-w-4xl mx-auto">
-            <CarouselContent>
-              {serviceImages.map((image, index) => (
-                <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/2">
-                  <div className="p-2 h-full">
-                    <div className="bg-white rounded-lg overflow-hidden shadow-md h-full flex flex-col">
-                      <div className="relative aspect-[4/3] overflow-hidden">
-                        <img 
-                          src={image.src} 
-                          alt={image.alt}
-                          className="object-cover w-full h-full"
-                        />
-                      </div>
-                      <div className="p-4 flex flex-col flex-grow">
-                        <h3 className="text-lg font-medium text-renova-blue mb-2">{image.title}</h3>
-                        <p className="text-renova-dark-gray text-sm">{image.description}</p>
+    <>
+      <section id="gallery" ref={sectionRef} className="py-20 bg-white">
+        <div className="section-container">
+          <div className="text-center mb-16">
+            <h2 className="section-title" ref={el => elementsRef.current[0] = el}>
+              Galeria de Serviços
+            </h2>
+            <p className="section-subtitle" ref={el => elementsRef.current[1] = el}>
+              Conheça nosso trabalho através de imagens reais dos nossos serviços
+            </p>
+          </div>
+          
+          <div 
+            ref={el => elementsRef.current[2] = el}
+            className="opacity-0 mx-auto"
+          >
+            <Carousel className="max-w-4xl mx-auto">
+              <CarouselContent>
+                {serviceImages.map((image, index) => (
+                  <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/2">
+                    <div className="p-2 h-full">
+                      <div className="bg-white rounded-lg overflow-hidden shadow-md h-full flex flex-col cursor-pointer transition-transform duration-300 hover:scale-105" onClick={() => openModal(index)}>
+                        <div className="relative aspect-[4/3] overflow-hidden">
+                          <img 
+                            src={image.src} 
+                            alt={image.alt}
+                            className="object-cover w-full h-full"
+                          />
+                        </div>
+                        <div className="p-4 flex flex-col flex-grow">
+                          <h3 className="text-lg font-medium text-renova-blue mb-2">{image.title}</h3>
+                          <p className="text-renova-dark-gray text-sm">{image.description}</p>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <div className="flex items-center justify-center gap-2 mt-4">
-              <CarouselPrevious className="static transform-none mx-2" />
-              <CarouselNext className="static transform-none mx-2" />
-            </div>
-          </Carousel>
-        </div>
-        
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {serviceImages.map((image, index) => (
-            <div 
-              key={index}
-              ref={el => elementsRef.current[3 + index] = el}
-              className="opacity-0 bg-white rounded-lg overflow-hidden shadow-md transition-all duration-300 hover:shadow-lg hover:translate-y-[-5px]"
-            >
-              <div className="relative aspect-[4/3] overflow-hidden">
-                <img 
-                  src={image.src} 
-                  alt={image.alt}
-                  className="object-cover w-full h-full"
-                />
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <div className="flex items-center justify-center gap-2 mt-4">
+                <CarouselPrevious className="static transform-none mx-2" />
+                <CarouselNext className="static transform-none mx-2" />
               </div>
-              <div className="p-4">
-                <h3 className="text-lg font-medium text-renova-blue mb-2">{image.title}</h3>
-                <p className="text-renova-dark-gray text-sm">{image.description}</p>
+            </Carousel>
+          </div>
+          
+          <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {serviceImages.map((image, index) => (
+              <div 
+                key={index}
+                ref={el => elementsRef.current[3 + index] = el}
+                className="opacity-0 bg-white rounded-lg overflow-hidden shadow-md transition-all duration-300 hover:shadow-lg hover:translate-y-[-5px] cursor-pointer"
+                onClick={() => openModal(index)}
+              >
+                <div className="relative aspect-[4/3] overflow-hidden">
+                  <img 
+                    src={image.src} 
+                    alt={image.alt}
+                    className="object-cover w-full h-full transition-transform duration-300 hover:scale-105"
+                  />
+                </div>
+                <div className="p-4">
+                  <h3 className="text-lg font-medium text-renova-blue mb-2">{image.title}</h3>
+                  <p className="text-renova-dark-gray text-sm">{image.description}</p>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      <ImageModal
+        isOpen={modalOpen}
+        onClose={closeModal}
+        images={serviceImages}
+        currentIndex={currentImageIndex}
+        onNext={nextImage}
+        onPrevious={previousImage}
+      />
+    </>
   );
 };
 
