@@ -71,7 +71,7 @@ const NavBar = () => {
             <div className="flex flex-col h-full">
               <div className="flex justify-between items-center p-5 border-b border-renova-light-gray">
                 <div className="font-display font-bold text-xl">
-                  <img src="/lovable-uploads/bbb735fd-1094-405b-9d5c-513f9999ba9f.png" alt="Renova Logo" className="h-10" />
+                  <img alt="Renova Logo" className="h-10" src="/lovable-uploads/39c5d01c-88f6-4e60-872a-8a766138b574.png" />
                 </div>
                 <SheetClose className="p-2 rounded-full hover:bg-renova-light-gray/70 transition-all">
                   <X className="text-renova-blue" size={20} />
